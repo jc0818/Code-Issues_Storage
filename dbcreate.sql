@@ -47,10 +47,23 @@ CREATE TABLE GSC (
   CONSTRAINT fk_gc_id FOREIGN KEY (gc_id) REFERENCES GS(gsm_id)
 );
 
-INSERT INTO GSC (product_id, product_name, price, juil, sty, gc_id,description) VALUES (1, 'juchan', 5000,5,'�� ���㱳��',1,'��ģ����ġ');
-INSERT INTO GSC (product_id, product_name, price, juil, sty, gc_id,description) VALUES (2, 'youngjun', 50,2,'�����',3,'�̰� �� ��ġ��');
-INSERT INTO GSC (product_id, product_name, price, juil, sty, gc_id,description) VALUES (3, 'Huckgi', 300,1,'����Ʈ��',2,'�׳� ��');
-INSERT INTO GSC (product_id, product_name, price, juil, sty, gc_id,description) VALUES (4, 'sihwan', 3000,5,'�� ���㱳��',4,'��ģ����ġ');
-INSERT INTO GSC (product_id, product_name, price, juil, sty, gc_id,description) VALUES (5, 'Jordon', 50000,5,'������',5,'��������ġ��');
+INSERT INTO GSC (product_id, product_name, price, juil, sty, gc_id,description) VALUES (1, 'juchan', 5000,5,'슛 맞춤교육',1,'미친슛코치');
+INSERT INTO GSC (product_id, product_name, price, juil, sty, gc_id,description) VALUES (2, 'youngjun', 50,2,'샌드백',3,'이게 왜 코치임');
+INSERT INTO GSC (product_id, product_name, price, juil, sty, gc_id,description) VALUES (3, 'Huckgi', 300,1,'포스트업',2,'그냥 함');
+INSERT INTO GSC (product_id, product_name, price, juil, sty, gc_id,description) VALUES (4, 'sihwan', 3000,5,'슛 맞춤교육',4,'미친슛코치');
+INSERT INTO GSC (product_id, product_name, price, juil, sty, gc_id,description) VALUES (5, 'Jordon', 50000,5,'레전드',5,'레전드코치님');
 
 select * from gsc;
+
+
+
+CREATE문 
+테이블 3개 이상(2개 이상의 기본키와 외래키 설정할 것.)
+각 테이블 당 속성 5개 이상, CHECK로 제약 조건 2개 이상 설정 할 것 
+
+INSERT문 
+테이블당 튜플5개 이상 (그중 1개 테이블은 15개 이상)
+
+SELECT문
+조회하는 질의문 5개 이상 만들기 (2개테이블 동시 참조하는 질의문 1개 포함 할것)_ 
+ex)4번째 글자가 s인 아이디를 가진 사람의 이름을 출력해주세요.

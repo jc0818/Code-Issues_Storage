@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>옷 주문서</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }  
+        .order-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .order-form img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .order-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .order-form input[type="text"],
+        .order-form input[type="number"],
+        .order-form textarea {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+        .order-form button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="order-form">
+        <img src="img/col4.png" alt="Clothing Item">
+        <label for="name">이름:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">이메일:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="quantity">수량:</label>
+        <input type="number" id="quantity" name="quantity" min="1" required>
+        <label for="address">배송 주소:</label>
+        <textarea id="address" name="address" rows="4" required></textarea>
+        <button type="submit">주문하기</button>
+    </div>
+</body>
+</html>

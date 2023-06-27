@@ -1,43 +1,76 @@
-package com.example.mpthree
-import android.os.Bundle
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.ListView
-import android.widget.TextView
+package com.example.myapplication
+
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mpthree.R
+import android.os.Bundle
+import android.view.View
+import android.widget.Toast
+import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var listView: ListView
-    private lateinit var sourceTextView: TextView
-    private lateinit var destinationTextView: TextView
-
+    lateinit var binding: ActivityMainBinding
+    var select_price: Int = 0
+    var count:Int = 0
+    var total_price:Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        listView = findViewById(R.id.listView)
-        sourceTextView = findViewById(R.id.sourceTextView)
-        destinationTextView = findViewById(R.id.destinationTextView)
-
-        val items = arrayOf("항목 1", "항목 2", "항목 3", "항목 4") // 리스트뷰에 표시할 항목 배열
-
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, items)
-        listView.adapter = adapter
-
-        listView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
-            val selectedText = parent.getItemAtPosition(position) as String
-            sourceTextView.text = selectedText
+        setContentView(binding.root)
+        binding.radioButton1.text = "소고기와 치즈맛(1,500원)"
+        binding.radioButton2.text = "불고기맛(2,000원)"
+        binding.radioButton3.text = "치킨맛(3,000원)"
+        binding.radioGroup.setOnCheckedChangeListener { radioGroup, i ->
+            when(i)
+            {
+                R.id.radioButton1 -> {
+                    binding.imageView.setImageResource(R.drawable.ic_launcher_foreground)
+                    select_price = 1500
+                    binding.txtPrice.visibility= View.VISIBLE
+                    binding.txtPrice.setText(select_price.toString())
+                }
+                R.id.radioButton2 -> {
+                    binding.imageView.setImageResource(R.drawable.ic_launcher_foreground)
+                    select_price = 2000
+                    binding.txtPrice.visibility= View.VISIBLE
+                    binding.txtPrice.setText(select_price.toString())
+                }
+                R.id.radioButton3 -> {
+                    binding.imageView.setImageResource(R.drawable.ic_launcher_foreground)
+                    select_price = 3000
+                    binding.txtPrice.visibility= View.VISIBLE
+                    binding.txtPrice.setText(select_price.toString())
+                }
+            }
         }
 
-        val copyButton = findViewById<Button>(R.id.copyButton)
-        copyButton.setOnClickListener {
-            destinationTextView.text = sourceTextView.text
+        binding.btnMinus.setOnClickListener{
+            if(count == 1){
+                Toast.makeText(applicationContext,"주문할수 있는 최소 수량은 1개입니다.",Toast.LENGTH_LONG).show()
+            }else {
+                count--
+                binding.editCount.setText(count.toString())
+                total_price = select_price * count
+                if (total_price > 10000) {
+                    binding.txtPay.text = total_price.toString()
+                } else {
+                    total_price = total_price + 2500
+                    binding.txtPay.text = total_price.toString()
+                }
+            }
+        }
+        binding.btnPlus.setOnClickListener{
+            if(count == 10){
+                Toast.makeText(applicationContext,"주문할수 있는 최대 수량은 10개입니다.",Toast.LENGTH_LONG).show()
+            }else {
+                count++
+                binding.editCount.setText(count.toString())
+                total_price = select_price * count
+                if (total_price > 10000) {
+                    binding.txtPay.text = total_price.toString()
+                } else {
+                    total_price = total_price + 2500
+                    binding.txtPay.text = total_price.toString()
+                }
+            }
         }
     }
 }
-//  buildFeatures {
-//
-//        viewBinding = true
-//    }
